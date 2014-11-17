@@ -1,28 +1,16 @@
 e-Learning
 ==========
 
-Skenario
+Banten e-Learning adalah Sistem Pembelajaran Online yang memungkinkan Pelajar mempelajari materi yang diberikan oleh Pengajar secara online dan juga Pengajar bisa memberikan Quiz, Tugas kepada pelajarnya untuk dinilai secara otomatis dari sistem maupun manual.
 
-  Nama Use Case = e-Learning
-  Aktor         = Mahasiswa, Dosen
-  Worker        = Admin
-  Tujuan        = Memudahkan Mahasiswa untuk mempelajari materi, mengerjakan quiz & tugas secara online dan memudahkan Dosen untuk mengajar dan memberikan materi pembelajaran secara online.
+Banten e-Learning ini sudah dipakai oleh Universitas Ternama di kota Serang yakni Universitas Serang Raya. Namun, Banten e-Learning ini bisa juga digunakan untuk SD, SMP, MTS, SMA, SMK, dan MA yang bisa dipilih kategorinya ketika installasi sistem.
 
+Kurikulum akan sesuai dengan Kategori yang dipilih ketika installasi dan bisa ditambahkan dan dirubah secara manual oleh Administrator.
 
-Aktor
-=====
-  Mahasiswa   => Melakukan Pendaftaran untuk melakukan proses pembelajaran, melihat materi yang berbentuk dokumen, video,mengisi quiz dan tugas yang diberikan oleh Dosen. Mahasiswa juga dapat melihat nilai mata kuliah yang diberikan oleh Dosen & mendownload file materi dari dosen.
+Installasi Banten e-Learning
+============================
 
-  Dosen       => Melakukan proses pengajaran, membuat materi, quiz,upload file berformat PDF  dan memberikan penilaian kepada mahasiswa.
+Dukungan
+========
 
-  Admin       => Melakukan Pemrosesan Daftar Mata Kuliah, Dosen, Dan melakukan pembagian tugas pengajaran mata kuliah, kelas, dan lain-lain.
-
-Sistem
-======
-  Admin mengatur tugas mengajar dosen (mata kuliah & kelas).
-
-Use Case Diagram
-
-Class Diagram
-
-State Diagram
+Banten e-Learning ini bersifat Open Source, namun jika membutuhkan dukungan installasi, pelatihan maupun pembuatan sistem secara custom bisa menghubungi Banten IT Solutions melalui website resminya www.banten-it.com atau melalui email info@banten-it.com.
