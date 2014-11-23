@@ -1,27 +1,27 @@
 <?php
-/*
-* Class Name : User
-* Param : $user, $pass
-*/
+/**
+ * Membuat Session untuk Login ke Halaman Administrator jika Username
+ * dan Password cocok dalam database.
+ */
+require 'inc/Autoloader.php';
 session_start();
+
 $username = $_POST['username'];
 $password = md5($_POST['password']);
-spl_autoload_register(function($class) {
-include 'inc/'.$class.'.php';
-});
-$data = new Database();
-$user = new Admin($data->conn);
-$user->login($username);
 
-if ($user->password == $password) {
-$_SESSION['username'] = $username;
-$_SESSION['password'] = $password;
-header('location:e-learning-admin.php?pengaturan=beranda');
+$admin = new Admin($database->conn);
+$admin->masuk($username);
+
+if ($admin->password == $password) {
+    $_SESSION['username'] = $username;
+    $_SESSION['password'] = $password;
+
+    header('location:index.php');
 } else {
 echo '
-<script type="text/javascript">
-window.alert("Username dan Password Salah !!!");
-window.location=("index.php")
-</script>';
+    <script type="text/javascript">
+        window.alert("Username dan Password Salah !!!");
+        window.location=("index.php")
+    </script>';
 }
 ?>

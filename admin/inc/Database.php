@@ -1,9 +1,8 @@
 <?php
 /**
-* class name = Database
-* Engine 	 = Mysql
-* Prosedure  = PDO
-*/
+ * Koneksi Database E-Learning Dengan Menggunakan PDO
+ * @param $conn Menghubungkan kedalam Database
+ */
 class Database
 {
 	public $conn;
@@ -12,15 +11,13 @@ class Database
 	{
 		$this->conn = NULL;
 
-		try{
-			$this->conn = new PDO("mysql:host=localhost;dbname=e_learning","root", "toor");
-
-		}catch (PDOExecption $e){
+		try {
+			$this->conn = new PDO("mysql:host=localhost;dbname=e_learning","root", "suck-IT26");
+		} catch (PDOExecption $e){
 			echo "Gagal : ".$e->getMassage();
 		}
 
 		return $this->conn;
 	}
 }
-
 ?>
