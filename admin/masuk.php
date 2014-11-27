@@ -18,10 +18,8 @@ if ($admin->password == $password) {
 
     header('location:index.php');
 } else {
-echo '
-    <script type="text/javascript">
-        window.alert("Username dan Password Salah !!!");
-        window.location=("index.php")
-    </script>';
+    // Buat Script menampilkan kesalahan Login
+    echo 'Maaf, Username dan Password Salah !!!';
+    header('location:index.php');
 }
 ?>
