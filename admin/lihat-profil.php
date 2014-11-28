@@ -7,50 +7,52 @@ if (isset($_POST['submit'])) {
 }
 ?>
 <section class="container" style="width:50%;margin:10px 25%">
-    <table class="table table-responsive table-hover">
-        <tbody>
-            <tr>
-                <td>Nama</td>
-                <td></td>
-                <td><?php echo $data->nama; ?></td>
-            </tr>
-            <tr>
-                <td>Alamat</td>
-                <td></td>
-                <td><?php echo $data->alamat; ?></td>
-            </tr>
-            <tr>
-                <td>Tanggal Lahir</td>
-                <td></td>
-                <td><?php echo $data->tgl_lahir; ?></td>
-            </tr>
-            <tr>
-                <td>Jenis Kelamin</td>
-                <td></td>
-                <td><?php
-                        if ($data->jenis_kelamin=="L") {
-                            echo "Laki-Laki";
-                        } else {
-                            echo "Perempuan";
-                        }
-                    ?></td>
-            </tr>
-            <tr>
-                <td>Agama</td>
-                <td></td>
-                <td><?php echo $data->agama; ?></td>
-            </tr>
-            <tr>
-                <td>Email</td>
-                <td></td>
-                <td><?php echo $data->email; ?></td>
-            </tr>
-        </tbody>
-    </table>
-
     <form action="" method="POST" accept-charset="utf-8">
-        <h2>Rubah Password</h2>
+        <h2>Halaman Akun</h2>
         <table class="table table-responsive">
+            <tr>
+                <td><label for="username">Nama</label></td>
+                <td></td>
+                <td><input type="text" class="form-control" name="username" placeholder="<?php echo $data->nama; ?>"></td>
+            </tr>
+            <tr>
+                <td><label for="username">Alamat</label></td>
+                <td></td>
+                <td><input type="text" class="form-control" name="username" placeholder="<?php echo $data->alamat; ?>"></td>
+            </tr>
+            <tr>
+                <td><label for="username">Tanggal Lahir</label></td>
+                <td></td>
+                <td>
+                <select name="jk" class="form-control">
+                <?php
+                        if ($data->jenis_kelamin=="L") {
+                            echo '
+                    <option value="L" selectded>Laki-Laki</option>
+                    <option value="P">Perempuan</option>';
+                        } else {
+                            echo '
+                    <option value="P" selectded>Perempuan</option>
+                    <option value="L">Laki-Laki</option>';
+                        }
+                    ?>
+                </select></td>
+            </tr>
+            <tr>
+                <td><label for="username">Jenis Kelamin</label></td>
+                <td></td>
+                <td><input type="text" class="form-control" name="username" placeholder="<?php echo $data->username; ?>"></td>
+            </tr>
+            <tr>
+                <td><label for="username">Agama</label></td>
+                <td></td>
+                <td><input type="text" class="form-control" name="username" placeholder="<?php echo $data->agama; ?>"></td>
+            </tr>
+            <tr>
+                <td><label for="username">Email</label></td>
+                <td></td>
+                <td><input type="text" class="form-control" name="username" placeholder="<?php echo $data->email; ?>"></td>
+            </tr>
             <tr>
                 <td><label for="username">Username</label></td>
                 <td></td>
@@ -59,7 +61,7 @@ if (isset($_POST['submit'])) {
             <tr>
                 <td><label for="password">Password</label></td>
                 <td></td>
-                <td><input type="password" class="form-control" name="password" placeholder="<?php echo $data->password; ?>"></td>
+                <td><input type="password" class="form-control" name="password" placeholder="Isikan Password Anda !"></td>
             </tr>
             <tr>
                 <td><input type="submit" name="submit" class="btn btn-primary" value="Simpan"></td>
