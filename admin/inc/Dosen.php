@@ -68,21 +68,22 @@ class Dosen
     $this->agama= $hasil['agama'];
     $this->level= $hasil['level'];
   }
-  public function tambah($table)
+  public function tambah()
   {
     try {
-        $query = "INSERT INTO $table SET username = :username, nama = :nama, jenis_kelamin = :jenis_kelamin, alamat = :alamat, tgl_lahir = :tgl_lahir, agama = :agama, email = :email, password = :password, level = :level";
+        $query = "INSERT INTO dosen (username, nama, jenis_kelamin, alamat, tgl_lahir, agama, email, password, level) VALUES (:username, :nama, :jenis_kelamin, :alamat, :tgl_lahir, :agama, :email, :password, :level)";
 
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(':username', $_POST['username']);
-        $stmt->bindParam(':password', $_POST['password']);
         $stmt->bindParam(':nama', $_POST['nama']);
-        $stmt->bindParam('jenis_kelamin', $_POST['jk']);
-        $stmt->bindParam('alamat', $_POST['alamat']);
-        $stmt->bindParam('tgl_lahir',$_POST['tgl_lahir']);
-        $stmt->bindParam('email', $_POST['email']);
-        $stmt->bindParam('agama', $_POST['agama']);
-        $stmt->bindParam('lavel', $_POST['level']);
+        $stmt->bindParam(':jenis_kelamin', $_POST['jk']);
+        $stmt->bindParam(':alamat', $_POST['alamat']);
+        $stmt->bindParam(':tgl_lahir', $_POST['tgl_lahir']);
+        $stmt->bindParam(':agama', $_POST['agama']);
+        $stmt->bindParam(':email', $_POST['email']);
+        $stmt->bindParam(':password', $_POST['password']);
+        $stmt->bindParam(':level', $_POST['level']);
+        $stmt->execute();
     } catch (PDOException $e) {
         echo "Gagal :".$e->getMessage();
     }

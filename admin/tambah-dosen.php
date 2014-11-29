@@ -3,7 +3,6 @@ $data = new Dosen($database->conn);
 
 if (isset($_POST['submit'])) {
     $data->tambah();
-    header('location:index.php?halaman=tambah-dosen');
 }
 ?>
 <section class="container" style="width:50%;margin:10px 25%">
@@ -12,37 +11,33 @@ if (isset($_POST['submit'])) {
         <h2>Tambah Dosen</h2>
         <table class="table table-responsive">
             <tr>
-                <td><label for="nama">Nama</label></td>
+                <td><label for="username">Username</label></td>
                 <td></td>
-                <td><input type="text" class="form-control" name="nama" placeholder="Nama Dosen"</td>
+                <td><input type="text" class="form-control" name="username" placeholder="Username"</td>
             </tr>
             <tr>
-                <td><label for="tgl_lahir">Tanggal Lahir</label></td>
+                <td><label for="nama">Nama</label></td>
                 <td></td>
-                <td><input type="text" class="form-control" name="tgl_lahir" placeholder ="Tanggal Lahir"></td>
+                <td><input type="text" class="form-control" name="nama" placeholder="Nama Lengkap"</td>
             </tr>
             <tr>
                 <td><label for="jk">Jenis Kelamin</label></td>
                 <td></td>
                 <td>
                 <select name="jk" class="form-control">
-                <?php
-                        if ($data->jenis_kelamin=="L") {
-                            echo '
-                    <option  selectded>Laki-Laki</option>
-                    <optionx>Perempuan</option>';
-                        } else {
-                            echo '
-                    <option  selectded>Perempuan</option>
-                    <option>Laki-Laki</option>';
-                        }
-                    ?>
+                    <option value="L" selectded>Laki-Laki</option>
+                    <option value="P">Perempuan</option>
                 </select></td>
             </tr>
             <tr>
                 <td><label for="alamat">Alamat</label></td>
                 <td></td>
-                <td><textarea class="form-control" name="alamat" placeholder="Alamat"></textarea></td>
+                <td><textarea class="form-control" name="alamat" placeholder="Alamat Lengkap"></textarea></td>
+            </tr>
+            <tr>
+                <td><label for="tanggal">Tanggal Lahir</label></td>
+                <td></td>
+                <td><input type="text" class="form-control" name="tgl_lahir" placeholder="Tanggal-Bulan-Tahun"></td>
             </tr>
             <tr>
                 <td><label for="agama">Agama</label></td>
@@ -55,15 +50,11 @@ if (isset($_POST['submit'])) {
                 <td><input type="text" class="form-control" name="email" placeholder="Email"></td>
             </tr>
             <tr>
-                <td><label for="username">Username</label></td>
-                <td></td>
-                <td><input type="text" class="form-control" name="username" placeholder="Username"></td>
-            </tr>
-            <tr>
                 <td><label for="password">Password</label></td>
                 <td></td>
                 <td><input type="password" class="form-control" name="password" placeholder=" Password "></td>
             </tr>
+            <input type="hidden" name="level" value="dosen" />
             <tr>
                 <td><input type="submit" name="submit" class="btn btn-primary" value="Simpan"></td>
                 <td></td>
