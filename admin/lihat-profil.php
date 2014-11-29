@@ -18,9 +18,11 @@ if (isset($_POST['submit'])) {
                 <td><input type="text" class="form-control" name="nama" value="<?php echo $data->nama; ?>"></td>
             </tr>
             <tr>
-                <td><label for="alamat">Alamat</label></td>
+                <td><label for="tgl">Tanggal Lahir</label></td>
                 <td></td>
-                <td><input type="text" class="form-control" name="alamat" placeholder="<?php echo $data->alamat; ?>"></td>
+                <td><input type="text" class="form-control" name="tgl_lahir" value="<?php 
+                $tgl = date("d-m-Y", strtotime($data->tgl_lahir));
+                echo $tgl; ?>"></td>
             </tr>
             <tr>
                 <td><label for="jk">Jenis Kelamin</label></td>
