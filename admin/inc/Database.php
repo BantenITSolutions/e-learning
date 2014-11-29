@@ -12,7 +12,7 @@ class Database
 		$this->conn = NULL;
 
 		try {
-			$this->conn = new PDO("mysql:host=localhost;dbname=e_learning","root", "toor");
+			$this->conn = new PDO("mysql:host=localhost;dbname=e_learning","root", "suck-IT26");
 		} catch (PDOExecption $e){
 			echo "Gagal : ".$e->getMassage();
 		}

@@ -69,22 +69,20 @@ class Dosen
   }
   public function tambah($table)
   {
-    $query = "INSERT INTO $table SET name = ?, tgl_lahir = ?, alamat = ?, email = ?,username=?, jenis_kelamin=?,agama=?, password = ?";
+    try {
+        $query = "INSERT INTO $table SET username = :username, nama = :nama, jenis_kelamin = :jenis_kelamin, alamat = :alamat, tgl_lahir = :tgl_lahir, agama = :agama, email = :email, password = :password, level = :level";
 
-    $stmt = $this->conn->prepare($query);
-    $stmt->bindParam(1, $this->nama);
-    $stmt->bindParam(2, $this->tgl_lahir);
-    $stmt->bindParam(3, $this->alamat);
-    $stmt->bindParam(4, $this->email);
-    $stmt->bindParam(5, $this->jenis_kelamin);
-    $stmt->bindParam(6, $this->username);
-    $stmt->bindParam(7, $this->password);
-    $stmt->bindParam(7, $this->agama);
-    if ($stmt->execute()) {
-      return TRUE;
-    } else {
-      return FALSE;
-    }
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':username', $_POST['username']);
+        $stmt->bindParam(2, $this->tgl_lahir);
+        $stmt->bindParam(3, $this->alamat);
+        $stmt->bindParam(4, $this->email);
+        $stmt->bindParam(5, $this->jenis_kelamin);
+        $stmt->bindParam(6, $this->username);
+        $stmt->bindParam(7, $this->password);
+        $stmt->bindParam(7, $this->agama);
+    } catch (PDOException $e) {
+        echo "Gagal :".$e->getMessage();
     }
 }
 ?>
