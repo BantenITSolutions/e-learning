@@ -78,10 +78,11 @@ class Dosen
         $stmt->bindParam(':nama', $_POST['nama']);
         $stmt->bindParam(':jenis_kelamin', $_POST['jk']);
         $stmt->bindParam(':alamat', $_POST['alamat']);
-        $stmt->bindParam(':tgl_lahir', $_POST['tgl_lahir']);
+        $tgl = $_POST['tgl_lahir'];
+        $stmt->bindParam(':tgl_lahir', date("Y-m-d", strtotime($_POST['tgl_lahir'])));
         $stmt->bindParam(':agama', $_POST['agama']);
         $stmt->bindParam(':email', $_POST['email']);
-        $stmt->bindParam(':password', $_POST['password']);
+        $stmt->bindParam(':password', md5($_POST['password']));
         $stmt->bindParam(':level', $_POST['level']);
         $stmt->execute();
     } catch (PDOException $e) {
