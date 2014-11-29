@@ -66,6 +66,7 @@ class Dosen
     $this->tgl_lahir = $hasil['tgl_lahir'];
     $this->email= $hasil['email'];
     $this->agama= $hasil['agama'];
+    $this->level= $hasil['level'];
   }
   public function tambah($table)
   {
@@ -81,6 +82,7 @@ class Dosen
         $stmt->bindParam('tgl_lahir',$_POST['tgl_lahir']);
         $stmt->bindParam('email', $_POST['email']);
         $stmt->bindParam('agama', $_POST['agama']);
+        $stmt->bindParam('lavel', $_POST['level']);
     } catch (PDOException $e) {
         echo "Gagal :".$e->getMessage();
     }
