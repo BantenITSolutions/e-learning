@@ -11,17 +11,17 @@ if (isset($_POST['submit'])) {
         <h2>Halaman Akun</h2>
         <table class="table table-responsive">
             <tr>
-                <td><label for="username">Nama</label></td>
+                <td><label for="nama">Nama</label></td>
                 <td></td>
-                <td><input type="text" class="form-control" name="username" placeholder="<?php echo $data->nama; ?>"></td>
+                <td><input type="text" class="form-control" name="nama" placeholder="<?php echo $data->nama; ?>"></td>
             </tr>
             <tr>
-                <td><label for="username">Alamat</label></td>
+                <td><label for="alamat">Alamat</label></td>
                 <td></td>
-                <td><input type="text" class="form-control" name="username" placeholder="<?php echo $data->alamat; ?>"></td>
+                <td><input type="text" class="form-control" name="alamat" placeholder="<?php echo $data->alamat; ?>"></td>
             </tr>
             <tr>
-                <td><label for="username">Tanggal Lahir</label></td>
+                <td><label for="jk">Jenis Kelamin</label></td>
                 <td></td>
                 <td>
                 <select name="jk" class="form-control">
@@ -39,19 +39,19 @@ if (isset($_POST['submit'])) {
                 </select></td>
             </tr>
             <tr>
-                <td><label for="username">Jenis Kelamin</label></td>
+                <td><label for="alamat">Alamat</label></td>
                 <td></td>
-                <td><input type="text" class="form-control" name="username" placeholder="<?php echo $data->username; ?>"></td>
+                <td><textarea class="form-control" name="alamat"><?php echo $data->alamat; ?></textarea></td>
             </tr>
             <tr>
-                <td><label for="username">Agama</label></td>
+                <td><label for="agama">Agama</label></td>
                 <td></td>
-                <td><input type="text" class="form-control" name="username" placeholder="<?php echo $data->agama; ?>"></td>
+                <td><input type="text" class="form-control" name="agama" placeholder="<?php echo $data->agama; ?>"></td>
             </tr>
             <tr>
-                <td><label for="username">Email</label></td>
+                <td><label for="email">Email</label></td>
                 <td></td>
-                <td><input type="text" class="form-control" name="username" placeholder="<?php echo $data->email; ?>"></td>
+                <td><input type="text" class="form-control" name="email" placeholder="<?php echo $data->email; ?>"></td>
             </tr>
             <tr>
                 <td><label for="username">Username</label></td>
