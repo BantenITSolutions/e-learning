@@ -3,17 +3,19 @@ $data = new Admin($database->conn);
 $data->lihat($_SESSION['username']);
 
 if (isset($_POST['submit'])) {
-    $data->rubah($_POST['username'], md5($_POST['password']));
+    $data->rubah();
+    header('location:index.php?halaman=akun');
 }
 ?>
 <section class="container" style="width:50%;margin:10px 25%">
     <form action="" method="POST" accept-charset="utf-8">
+        <input type="hidden" name="id" value="<?php echo $data->id; ?>">
         <h2>Halaman Akun</h2>
         <table class="table table-responsive">
             <tr>
                 <td><label for="nama">Nama</label></td>
                 <td></td>
-                <td><input type="text" class="form-control" name="nama" placeholder="<?php echo $data->nama; ?>"></td>
+                <td><input type="text" class="form-control" name="nama" value="<?php echo $data->nama; ?>"></td>
             </tr>
             <tr>
                 <td><label for="alamat">Alamat</label></td>
@@ -56,7 +58,7 @@ if (isset($_POST['submit'])) {
             <tr>
                 <td><label for="username">Username</label></td>
                 <td></td>
-                <td><input type="text" class="form-control" name="username" placeholder="<?php echo $data->username; ?>"></td>
+                <td><input type="text" class="form-control" name="username" value="<?php echo $data->username; ?>"></td>
             </tr>
             <tr>
                 <td><label for="password">Password</label></td>

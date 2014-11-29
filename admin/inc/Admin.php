@@ -62,16 +62,19 @@ class Admin
     $this->agama= $hasil['agama'];
   }
 
-  public function rubah($username, $password)
+  public function rubah()
   {
-    $query = "UPDATE admin
-                SET username = ?,
-                SET password = ?
-                WHERE username = $this->username";
-    $stmt = $this->conn->prepare($query);
-    $stmt->bindParam(1, $username);
-    $stmt->bindParam(2, $password);
-    $stmt->execute();
+    try {
+        $query = "UPDATE admin SET nama = :nama, username = :username, password = :password WHERE username = :id";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':username', $_POST['username']);
+        $stmt->bindParam(':password', md5($_POST['password']));
+        $stmt->bindParam(':nama', $_POST['nama']);
+        $stmt->bindParam(':id', $_SESSION['username']);
+        $stmt->execute();
+    } catch (PDOException $e) {
+        echo "Gagal ".$e->getMessage();
+    }
   }
 }
 ?>
