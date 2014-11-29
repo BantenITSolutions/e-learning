@@ -18,11 +18,10 @@ if (isset($_POST['submit'])) {
                 <td><input type="text" class="form-control" name="nama" value="<?php echo $data->nama; ?>"></td>
             </tr>
             <tr>
-                <td><label for="tgl">Tanggal Lahir</label></td>
+                <td><label for="tgl_lahir">Tanggal Lahir</label></td>
                 <td></td>
-                <td><input type="text" class="form-control" name="tgl_lahir" value="<?php 
-                $tgl = date("d-m-Y", strtotime($data->tgl_lahir));
-                echo $tgl; ?>"></td>
+                <td><input type="text" class="form-control" name="tgl_lahir" value="<?php $tgl= date("d-m-Y", strtotime($data->tgl_lahir));
+                 echo $tgl; ?>"></td>
             </tr>
             <tr>
                 <td><label for="jk">Jenis Kelamin</label></td>
@@ -45,17 +44,17 @@ if (isset($_POST['submit'])) {
             <tr>
                 <td><label for="alamat">Alamat</label></td>
                 <td></td>
-                <td><textarea class="form-control" name="alamat"><?php echo $data->alamat; ?></textarea></td>
+                <td><textarea class="form-control" name="alamat" ><?php echo $data->alamat; ?></textarea></td>
             </tr>
             <tr>
                 <td><label for="agama">Agama</label></td>
                 <td></td>
-                <td><input type="text" class="form-control" name="agama" placeholder="<?php echo $data->agama; ?>"></td>
+                <td><input type="text" class="form-control" name="agama" value="<?php echo $data->agama; ?>"></td>
             </tr>
             <tr>
                 <td><label for="email">Email</label></td>
                 <td></td>
-                <td><input type="text" class="form-control" name="email" placeholder="<?php echo $data->email; ?>"></td>
+                <td><input type="text" class="form-control" name="email" value="<?php echo $data->email; ?>"></td>
             </tr>
             <tr>
                 <td><label for="username">Username</label></td>

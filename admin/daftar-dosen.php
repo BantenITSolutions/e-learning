@@ -1,22 +1,44 @@
 <?php
-error_reporting(0);
-session_start();
+include 'header.php';
+spl_autoload_register(function($class){
+	include 'inc/'.$class.'.php';
+});
 
-if (empty($_SESSION[username])AND empty($_SESSION[password])){
+$database = new Database();
 
-	include "index.php";
-}else{
-?>
-<!Doctype html>
-<html>
-<head>
-	<title>Admin|Dashboard</title>
-</head>
-<body>
-	<h1>Walcome Admin</h1>
+  $db = $database->conn();
 
-</body>
-</html>
-<?
-}
+  $id = isset($_GET['id'])? $_GET['id']: die('Gagal : Tidak ada ID !');
+
+  $produk = new Dosen($db);
+
+  $produk->id = $id;
+
+  $produk->tambah("dosen");
+
+
+echo "<div class='right-button-margin'>";
+echo "<a href='index.php' class='btn btn-primary pull-right'>Lihat Semua Produk</a>";
+echo "</div><div style='clear:both;padding:5px' />";
+
+
+  echo '
+      <table class="table table-hover table-responsive">
+        <tbody>
+          <tr>
+            <td><h3>'.$dosen->nama.'</h3></td>
+          </tr>
+          <tr>
+            <td><p>'.$dosen->alamat.'</p></td>
+          </tr>
+          <tr>
+            <td><p>'.$dosen->email.'</p></td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
+
+  ';
+
+include 'footer.php';
 ?>

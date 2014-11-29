@@ -6,6 +6,11 @@ if ($url == 'akun') {
     include 'header.php';
     include 'lihat-profil.php';
     include 'footer.php';
+} elseif ($url == 'tambah-dosen') {
+    $title = "Tambah Dosen";
+    include 'header.php';
+    include 'tambah-dosen.php';
+    include 'footer.php';
 } else {
     $title = "Dashboard - e-Learning Universitas Serang Raya";
     include 'header.php';
