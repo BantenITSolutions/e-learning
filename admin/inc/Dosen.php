@@ -74,15 +74,16 @@ class Dosen
 
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(':username', $_POST['username']);
-        $stmt->bindParam(2, $this->tgl_lahir);
-        $stmt->bindParam(3, $this->alamat);
-        $stmt->bindParam(4, $this->email);
-        $stmt->bindParam(5, $this->jenis_kelamin);
-        $stmt->bindParam(6, $this->username);
-        $stmt->bindParam(7, $this->password);
-        $stmt->bindParam(7, $this->agama);
+        $stmt->bindParam(':password', $_POST['password']);
+        $stmt->bindParam(':nama', $_POST['nama']);
+        $stmt->bindParam('jenis_kelamin', $_POST['jk']);
+        $stmt->bindParam('alamat', $_POST['alamat']);
+        $stmt->bindParam('tgl_lahir',$_POST['tgl_lahir']);
+        $stmt->bindParam('email', $_POST['email']);
+        $stmt->bindParam('agama', $_POST['agama']);
     } catch (PDOException $e) {
         echo "Gagal :".$e->getMessage();
     }
+}
 }
 ?>
