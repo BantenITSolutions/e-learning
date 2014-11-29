@@ -88,6 +88,37 @@ class Dosen
     } catch (PDOException $e) {
         echo "Gagal :".$e->getMessage();
     }
-}
+
+    public function rubah()
+    {
+        try{
+            $query =" UPDATE dosen SET username = :username, nama = :nama, jenis_kelamin = :jenis_kelamin, alamat = :alamat, tgl_lahir= :tgl_lahir, agama = :agama, email = :email, password = :password WHERE username = :id";
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindParam(':username', $_POST['username']);
+            $stmt->bindParam(':nama', $_POST['nama']);
+            $stmt->bindParam('jenis_kelamin', $_POST['jenis_kelamin']);
+            $stmt->bindParam(':alamat', $_POST['alamat']);
+            $stmt->bindParam(':tgl_lahir', date("Y-m-d", strtotime($_POST['tgl_lahir'])));
+            $stmt->bindParam('agama', $_POST['agama']);
+            $stmt->bindParam('email', $_POST['email']);
+            $stmt->bindParam('password', $_POST['password']);
+            $stmt->execute();
+        } catch (PDOException $e){
+            echo "gagal ".$e->getMessage();
+        }
+
+        public function hapus($username)
+        {
+            try{
+
+                $query = "DELETE FROM $table WHERE username = :username";
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindParam(':username', $_GET['username'];  
+            $stmt->execute()){
+
+                }
+            }
+        }
+
 }
 ?>
