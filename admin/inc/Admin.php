@@ -65,9 +65,10 @@ class Admin
   public function rubah()
   {
     try {
-        $query = "UPDATE admin SET nama = :nama, tgl_lahir = :tgl_lahir, username = :username, password = :password WHERE username = :id";
+        $query = "UPDATE admin SET nama = :nama, tgl_lahir = :tgl_lahir, jenis_kelamin = :jk, username = :username, password = :password WHERE username = :id";
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(':username', $_POST['username']);
+        $stmt->bindParam(':jk', $_POST['jk']);
         $stmt->bindParam(':tgl_lahir', date("Y-m-d", strtotime($_POST['tgl_lahir'])));
         $stmt->bindParam(':password', md5($_POST['password']));
         $stmt->bindParam(':nama', $_POST['nama']);
