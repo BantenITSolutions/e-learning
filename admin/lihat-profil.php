@@ -1,9 +1,9 @@
 <?php
 $data = new Admin($database->conn);
-$data->lihat($_SESSION['username']);
+$data->lihatadmin($_SESSION['id']);
 
 if (isset($_POST['submit'])) {
-    $data->rubah();
+    $data->rubahadmin();
     header('location:index.php?halaman=akun');
 }
 ?>
@@ -24,10 +24,10 @@ if (isset($_POST['submit'])) {
                  echo $tgl; ?>"></td>
             </tr>
             <tr>
-                <td><label for="jk">Jenis Kelamin</label></td>
+                <td><label for="jenis_kelamin">Jenis Kelamin</label></td>
                 <td></td>
                 <td>
-                <select name="jk" class="form-control">
+                <select name="jenis_kelamin" class="form-control">
                 <?php
                         if ($data->jenis_kelamin=="L") {
                             echo '

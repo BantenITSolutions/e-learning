@@ -1,26 +1,60 @@
 <?php
 /**
-* class name = Database
-* Engine 	 = Mysql
-* Prosedure  = PDO
+* 
 */
-class Database
+class Kelas
 {
-	public $conn;
+    private $conn;
+    public $id;
+    public $kelas;
 
-	function __construct()
-	{
-		$this->conn = NULL;
+    /**
+     * Membuat Koneksi Database
+     * @param string $db PDO
+     */
+    function __construct($db)
+    {
+        $this->conn = $db;
+    }
 
-		try{
-			$this->conn = new PDO("mysql:host=localhost;dbname=e_learning","root", "toor");
+    public function tambahkelas()
+    {
+        try {
+            $query = "INSERT INTO kelas (id, kelas) VALUES (:id, :kelas)";
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindParam(':id', $_POST['id']);
+            $stmt->bindParam(':kelas', $_POST['kelas']);
+            $stmt->execute();
+        } catch (PDOException $e) {
+            echo "Gagal : ".$e->getMessage();
+        }
+    }
 
-		}catch (PDOExecption $e){
-			echo "Gagal : ".$e->getMassage();
-		}
+    public function lihatkelas($table, $halaman, $nomordari, $dataperhalaman)
+    {
+        try {
+            $query = "SELECT * FROM $table ORDER BY kelas ASC LIMIT $nomordari, $dataperhalaman";
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute();
+            return $stmt;
+        } catch (PDOException $e) {
+            echo "Gagal : ".$e->getMessage();
+        }
+    }
 
-		return $this->conn;
-	}
+    // Mengambil Bilangan Baris Produk
+    public function hitungSemua($table)
+    {
+        try {
+            $query = "SELECT id FROM $table";
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute();
+            $nomor = $stmt->rowCount();
+            return $nomor;
+        } catch (PDOException $e) {
+            echo "Gagal : ".$e->getMessage();
+        }
+    }
+    
 }
-
 ?>

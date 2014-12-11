@@ -15,6 +15,7 @@ $admin->masuk($username);
 if ($admin->password == $password) {
     $_SESSION['username'] = $username;
     $_SESSION['password'] = $password;
+    $_SESSION['id'] = $admin->id;
 
     header('location:index.php');
 } else {

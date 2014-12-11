@@ -2,7 +2,7 @@
 $data = new Dosen($database->conn);
 
 if (isset($_POST['submit'])) {
-    $data->tambah();
+    $data->tambahdosen();
 }
 ?>
 <section class="container" style="width:50%;margin:10px 25%">

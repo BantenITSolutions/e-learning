@@ -10,11 +10,15 @@ class Admin
   public  $jenis_kelamin;
   public  $alamat;
   public  $tgl_lahir;
-  public  $email;
   public  $agama;
+  public  $email;
   public  $username;
   public  $password;
 
+  /**
+   * Membuat Koneksi Database
+   * @param string $db PDO
+   */
   function __construct($db)
   {
     $this->conn = $db;
@@ -35,46 +39,58 @@ class Admin
     $hasil = $stmt->fetch(PDO::FETCH_ASSOC);
     $this->username = $hasil['username'];
     $this->password = $hasil['password'];
+    $this->id = $hasil['id'];
   }
 
   /**
    * Menampilkan Profil / Data Admin
-   * @param  string $table    Table Database admin
-   * @param  string $username Lihat data dengan username admin
+   * @param  string $id Lihat data dengan id yang ada didalam session
    * @return void
    */
-  public function lihat($username)
+  public function lihatadmin($id)
   {
-    $query = "SELECT * FROM admin WHERE username = ?";
+    $query = "SELECT * FROM admin WHERE id = ?";
     $stmt  = $this->conn->prepare($query);
-    $stmt->bindParam(1, $username);
+    $stmt->bindParam(1, $id);
     $stmt->execute();
 
     $hasil = $stmt->fetch(PDO::FETCH_ASSOC);
     $this->id       = $hasil['id'];
-    $this->username = $hasil['username'];
-    $this->password = $hasil['password'];
     $this->nama = $hasil['nama'];
     $this->jenis_kelamin = $hasil['jenis_kelamin'];
     $this->alamat = $hasil['alamat'];
     $this->tgl_lahir = $hasil['tgl_lahir'];
-    $this->email= $hasil['email'];
     $this->agama= $hasil['agama'];
+    $this->email= $hasil['email'];
+    $this->username = $hasil['username'];
+    $this->password = $hasil['password'];
   }
 
-  public function rubah()
+  /**
+   * Merubah Data Admin
+   * @return void
+   */
+  public function rubahadmin()
   {
     try {
-        $query = "UPDATE admin SET nama = :nama, tgl_lahir = :tgl_lahir, jenis_kelamin = :jk,alamat = :alamat,agama = :agama, email= :email, username = :username, password = :password WHERE username = :id";
+        $query = "UPDATE admin SET  nama = :nama,
+                                    jenis_kelamin = :jenis_kelamin,
+                                    alamat = :alamat,
+                                    tgl_lahir = :tgl_lahir,
+                                    agama = :agama,
+                                    email= :email,
+                                    username = :username,
+                                    password = :password
+                WHERE username = :id";
         $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(':username', $_POST['username']);
-        $stmt->bindParam(':jk', $_POST['jk']);
-        $stmt->bindParam(':tgl_lahir', date("Y-m-d", strtotime($_POST['tgl_lahir'])));
+        $stmt->bindParam(':nama', $_POST['nama']);
+        $stmt->bindParam(':jenis_kelamin', $_POST['jenis_kelamin']);
         $stmt->bindParam(':alamat', $_POST['alamat']);
+        $stmt->bindParam(':tgl_lahir', date("Y-m-d", strtotime($_POST['tgl_lahir'])));
         $stmt->bindParam(':agama', $_POST['agama']);
         $stmt->bindParam(':email', $_POST['email']);
+        $stmt->bindParam(':username', $_POST['username']);
         $stmt->bindParam(':password', md5($_POST['password']));
-        $stmt->bindParam(':nama', $_POST['nama']);
         $stmt->bindParam(':id', $_SESSION['username']);
         $stmt->execute();
     } catch (PDOException $e) {
